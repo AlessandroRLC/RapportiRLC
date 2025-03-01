@@ -48,6 +48,7 @@ namespace RapportiRLC
                     comboBox6.Items.Add(s);
                     comboBox7.Items.Add(s);
                     comboBox8.Items.Add(s);
+                    comboBox8.Items.Add(s);
                 }
             }
         }
