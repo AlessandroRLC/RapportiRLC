@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,6 +40,9 @@ namespace RapportiRLC
             static public string Database { get; set; }
             static public string User { get; set; }
             static public string Pwd { get; set; }
+
+            //INSERT INTO MatriceRapporti(Autore,NomeRapporto) output INSERTED.ID VALUES('','')
+            static public int ID_Rapporto { get; set; }
 
             static public int NumeroMassimoGiornateAmmesso { get; set; } = 14;
             static public int GiornateLavorate{ get; set; }
@@ -176,7 +180,7 @@ namespace RapportiRLC
         {
             InitializeComponent();
             //Inizializzo Dati Database Di Default (Editabili anche a video).
-            ServerTextBox.Text = @"192.168.1.239\SQLEXPRESS";
+            ServerTextBox.Text = @"localhost\SQLEXPRESS";
             UserTextBox.Text = "sa";
             PwdTextBox.Text = "io";
             NameTextBox.Text = "Rapporti_RLC";
@@ -245,6 +249,7 @@ namespace RapportiRLC
                             dt.Load(reader);
                             globals.MappaClientiInMemoria(dt);
                             globals.ClientiToCBox(globals.Clienti,ClienteBox);
+                            LogoutBtn.Visible = true;
                         }
                     }
                 }
@@ -259,11 +264,6 @@ namespace RapportiRLC
             }
 
 
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -327,11 +327,45 @@ namespace RapportiRLC
                         combo.Items.Add(s);
                     }
                 }
+                combo.SelectedIndex = 0;
             }
 
             if (!combo.Enabled)
             {
                 combo.Items.Clear();
+            }
+        }
+
+        private void ApriRapporto_Click(object sender, EventArgs e)
+        {
+            string CreazioneRapp = "INSERT INTO MatriceRapporti (Autore,NomeRapporto) output inserted.id values ('','')"; //Inserimento rapporto vuoto, viene aggiornato dopo
+            if (conn != null && (conn.State == ConnectionState.Open))
+            {
+                cmd.CommandText = CreazioneRapp;
+                cmd.Connection = conn;
+                try
+                {
+                    Globals.ID_Rapporto = (int)cmd.ExecuteScalar();
+                    MessageBox.Show(Globals.ID_Rapporto.ToString());
+
+                }
+                catch (Exception ex) 
+                { 
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Effettua Prima il Login!!!");
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (conn != null && (conn.State == ConnectionState.Open))
+            {
+                conn.Close();
+                LogoutBtn.Visible = false;
             }
         }
     }

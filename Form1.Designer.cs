@@ -246,6 +246,8 @@
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.ServerTextBox = new System.Windows.Forms.TextBox();
+            this.comboBox114 = new System.Windows.Forms.ComboBox();
+            this.LogoutBtn = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.Riga14.SuspendLayout();
@@ -473,7 +475,7 @@
             this.ApriRapporto.TabIndex = 21;
             this.ApriRapporto.Text = "Apri Nuovo Rapporto";
             this.ApriRapporto.UseVisualStyleBackColor = true;
-            this.ApriRapporto.Click += new System.EventHandler(this.button1_Click);
+            this.ApriRapporto.Click += new System.EventHandler(this.ApriRapporto_Click);
             // 
             // checkBox1
             // 
@@ -752,7 +754,7 @@
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl.Location = new System.Drawing.Point(12, 12);
+            this.tabControl.Location = new System.Drawing.Point(18, 11);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(949, 776);
@@ -760,6 +762,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.LogoutBtn);
             this.tabPage1.Controls.Add(this.Riga14);
             this.tabPage1.Controls.Add(this.Riga13);
             this.tabPage1.Controls.Add(this.Riga12);
@@ -1756,6 +1759,7 @@
             // Riga8
             // 
             this.Riga8.Controls.Add(this.textBox10);
+            this.Riga8.Controls.Add(this.comboBox114);
             this.Riga8.Controls.Add(this.comboBox50);
             this.Riga8.Controls.Add(this.comboBox51);
             this.Riga8.Controls.Add(this.comboBox52);
@@ -2865,11 +2869,37 @@
             this.ServerTextBox.Size = new System.Drawing.Size(149, 20);
             this.ServerTextBox.TabIndex = 54;
             // 
+            // comboBox114
+            // 
+            this.comboBox114.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox114.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox114.FormattingEnabled = true;
+            this.comboBox114.IntegralHeight = false;
+            this.comboBox114.ItemHeight = 14;
+            this.comboBox114.Location = new System.Drawing.Point(126, -160);
+            this.comboBox114.Name = "comboBox114";
+            this.comboBox114.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.comboBox114.Size = new System.Drawing.Size(53, 22);
+            this.comboBox114.TabIndex = 29;
+            this.comboBox114.EnabledChanged += new System.EventHandler(this.Combo_EnabledChanged);
+            // 
+            // LogoutBtn
+            // 
+            this.LogoutBtn.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoutBtn.Location = new System.Drawing.Point(404, 25);
+            this.LogoutBtn.Name = "LogoutBtn";
+            this.LogoutBtn.Size = new System.Drawing.Size(131, 25);
+            this.LogoutBtn.TabIndex = 194;
+            this.LogoutBtn.Text = "Logout";
+            this.LogoutBtn.UseVisualStyleBackColor = true;
+            this.LogoutBtn.Visible = false;
+            this.LogoutBtn.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 805);
+            this.ClientSize = new System.Drawing.Size(991, 800);
             this.Controls.Add(this.tabControl);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -3135,6 +3165,8 @@
         private System.Windows.Forms.Panel Riga3;
         private System.Windows.Forms.Panel Riga2;
         private System.Windows.Forms.Panel Riga14;
+        private System.Windows.Forms.ComboBox comboBox114;
+        private System.Windows.Forms.Button LogoutBtn;
     }
 }
 
